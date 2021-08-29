@@ -14,9 +14,8 @@ const PageContainer = styled.div`
 `
 const ChildContainer = styled.div`
   flex-grow: 1;
-  margin-top: 97px;
+  /* margin-top: 97px; */
 `
-
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -32,7 +31,7 @@ const Layout = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <PageContainer>  
-        <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+        {/* < Header siteTitle={data.site.siteMetadata?.title || `Title`} /> */}
         <ChildContainer>{children}</ChildContainer>
         <footer
           style={{
