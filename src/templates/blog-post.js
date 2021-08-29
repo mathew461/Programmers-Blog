@@ -1,5 +1,6 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Layout from "../components/layout"
 
 export const data = graphql`
@@ -18,9 +19,8 @@ export const data = graphql`
 const BlogPost = ({ data }) => {    
     return (
         <Layout>
-            <h1>{data.mdx.frontmatter.title}</h1>
-            <p>Author: {data.mdx.frontmatter.author}</p>
-            <p>{data.mdx.body}</p>
+            <MDXRenderer>{data.mdx.body}</MDXRenderer>
+            <Link to="/">&larr; Back to homepage </Link>
         </Layout> 
     )
 }

@@ -1,8 +1,8 @@
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { Link, useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
+import styled from "styled-components"
 
-import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -16,19 +16,44 @@ const IndexPage = () => {
           }
         }
       }
+      allMdx {
+        nodes {
+          frontmatter {
+            title
+            author
+            slug
+          }
+        }
+      }
     }
   `)
 
   return (
-    <Layout>
+    <div>
       <SEO title="Home" />
       <BackgroundImage 
         Tag="header" 
         fluid={data.file.childImageSharp.fluid}
         style={{ height: "50vh" }}
       />
-    </Layout>
+      <BlogPreview>
+        <h2>Blog Posts</h2>
+        {data.allMdx.nodes.map(post => (
+          <h3>
+            <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+          </h3>
+        ))}
+      </BlogPreview>
+    </div>
   )
 }
 
 export default IndexPage
+
+const BlogPreview = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+`
