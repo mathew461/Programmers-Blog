@@ -1,10 +1,9 @@
 import * as React from "react"
-import { Link, useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import banner from "../images/banner.png"
 
 const IndexPage = () => {
   
