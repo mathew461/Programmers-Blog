@@ -22,6 +22,7 @@ const IndexPage = () => {
             title
             author
             slug
+            date
           }
         }
       }
@@ -40,7 +41,10 @@ const IndexPage = () => {
         <h2>Blog Posts</h2>
         {data.allMdx.nodes.map(post => (
           <h3>
-            <Link to={post.frontmatter.slug}>{post.frontmatter.title}</Link>
+              <Link to={post.frontmatter.slug}>
+                <h2>{post.frontmatter.title}</h2>
+                <p>{post.frontmatter.date}</p>
+              </Link>       
           </h3>
         ))}
       </BlogPreview>
@@ -56,4 +60,25 @@ const BlogPreview = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+
+  a {
+    margin: 1rem;
+    background: #f4f4f4;
+    color: #000000;
+    text-decoration: none;
+    display: block;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  a:hover {
+    background: #e4e4e4
+  }
+  h2 {
+      margin-bottom: 0;
+  }
+  p {
+      color: #777777;
+      font-size: .8rem;
+      font-style: italic;
+  }
 `
